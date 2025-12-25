@@ -14,16 +14,38 @@
                 </nuxt-link>
                 <nav class="hidden md:flex items-center gap-2">
                     <nuxt-link to="/profile">
-                        <UiSecondButton>
+                        <component :is="isProfileRoute ? primaryButton : secondButton">
                             <IconsUser />
                             <span>پروفایل کاربری</span>
-                        </UiSecondButton>
+                        </component>
                     </nuxt-link>
                     <nuxt-link to="/request/case-type">
-                        <UiButton>
+                        <component :is="isProfileRoute ? secondButton : primaryButton">
                             <IconsPlus />
                             <span>ثبت درخواست جدید</span>
-                        </UiButton>
+                        </component>
+                    </nuxt-link>
+                </nav>
+                <secondButton @click="isOpenMobileNav = !isOpenMobileNav">
+                    <Bar3 class="size-5" v-if="!isOpenMobileNav" />
+                    <XMarkIcon class="size-5" v-else />
+                </secondButton>
+            </div>
+            <div class="md:hidden border-t border-stone-100 bg-white" v-motion-slide-top v-if="isOpenMobileNav">
+                <nav class="px-4 py-3 space-y-1">
+                    <nuxt-link to="/profile">
+                        <button class="flex w-full items-center gap-3 px-4 py-3 rounded-xl transition-colors text-stone-600"
+                        :class="{'bg-teal-50 text-teal-700': route.path == '/profile'}"
+                        >
+                            <UserIcon class="w-5" /> پروفایل کاربری
+                        </button>
+                    </nuxt-link>
+                    <nuxt-link to="/request/case-type">
+                        <button class="flex w-full items-center gap-3 px-4 py-3 rounded-xl transition-colors text-stone-600"
+                        :class="{'bg-teal-50 text-teal-700': route.path == '/request/case-type'}"
+                        >
+                            <PlusIcon class="w-5" /> ثبت درخواست
+                        </button>
                     </nuxt-link>
                 </nav>
             </div>
@@ -31,3 +53,14 @@
         <slot />
     </div>
 </template>
+<script setup>
+    import Bar3 from '~/components/ui/bar-3.vue';
+    import primaryButton from '~/components/ui/button.vue';
+    import secondButton from '~/components/ui/second-button.vue';
+    import { UserIcon, PlusIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+    const route = useRoute()
+    const isProfileRoute = computed(() => route.path == '/profile' ? true : false);
+    const isOpenMobileNav = ref(false)
+
+    watch(() => route.path, () => isOpenMobileNav.value = false)
+</script>

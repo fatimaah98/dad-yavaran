@@ -11,13 +11,22 @@
         <button class="p-4 rounded-xl border-2 text-left transition-all duration-200 hover:border-teal-300 
         hover:bg-teal-50/30 focus:outline-none focus:ring-2 
         focus:ring-teal-500/20 border-stone-200 bg-white cursor-pointer" 
-        v-for="topic in topics" :key="topic.title">
+        :class="{'bg-teal-50/50 border-teal-500': selectedTopics?.title == topic.title}"
+        @click="selectedTopics = topic"
+        v-for="topic in topics" :key="topic.title"
+        v-motion
+        :initial="{ opacity: 0, y: 32 }"
+        :enter="{ opacity: 1, y: 0 }"
+        :transition="{ duration: .8, ease: 'easeOut' }"
+        >
             <div class="flex items-start gap-3">
-                <span class="p-2 rounded-lg transition-colors bg-stone-100 text-stone-500">
+                <span class="p-2 rounded-lg transition-colors bg-stone-100 text-stone-500"
+                :class="{'bg-teal-500! text-white!': selectedTopics?.title == topic.title}"
+                >
                     <component :is="topic.icon" class="w-5" />
                 </span>
                 <div class="text-right">
-                    <h3 class="font-medium transition-colors text-stone-700">
+                    <h3 class="font-medium transition-colors text-stone-700" :class="{'text-teal-700': selectedTopics?.title == topic.title}">
                         {{ topic.title }}
                     </h3>
                     <p class="text-xs text-stone-400 mt-0.5">
@@ -47,5 +56,7 @@
         {title: 'اموال و ارث', desc: 'وصیت‌نامه، تراست، انحصار وراثت', icon: DocumentTextIcon},
         {title: 'سایر', desc: 'مواردی که در بالا ذکر نشده‌اند', icon: QuestionMarkCircleIcon}
     ])
+
+    const selectedTopics = ref({})
 
 </script>

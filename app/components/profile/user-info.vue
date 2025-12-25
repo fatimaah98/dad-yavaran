@@ -1,6 +1,6 @@
 <template>
     <section class="mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 
-    focus-visible:ring-ring focus-visible:ring-offset-2">
+    focus-visible:ring-ring focus-visible:ring-offset-2" v-motion-slide-bottom>
         <div class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-stone-100">
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-xl font-semibold text-stone-800">
@@ -10,14 +10,14 @@
                     <PencilIcon class="w-5" />
                     ویرایش
                 </UiThirdButton>
-                <div class="flex gap-2" v-else>
+                <div class="flex gap-2 flex-wrap" v-else>
                     <UiSecondButton @click="disableForm">
                         <XMarkIcon class="w-4" />
-                        انصراف
+                        <span class="hidden md:block">انصراف</span>
                     </UiSecondButton>
                     <UiButton @click="disableForm">
                         <BookmarkSquareIcon class="w-4" />
-                        ذخیره تغییرات
+                        <span class="hidden md:block"> ذخیره تغییرات</span>
                     </UiButton>
                 </div>
             </div>

@@ -17,10 +17,13 @@
                 </p>
             </div>
             <FormIndicator :step-selected="step" />
-            <section class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-stone-100">
-                <Transition name="slide">
-                     <component :is="currentStep" :key="step" />
-                </Transition>
+            <section 
+            v-motion
+            :initial="{ opacity: 0, y: 32 }"
+            :enter="{ opacity: 1, y: 0 }"
+            :transition="{ duration: .8, ease: 'easeOut' }"
+            class="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-stone-100" :key="step">
+                <component :is="currentStep" :key="step" />
             </section>
             <div class="flex items-center justify-between mt-8">
                 <SecondButton @click="step --">

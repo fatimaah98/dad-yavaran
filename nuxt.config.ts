@@ -14,5 +14,6 @@ export default defineNuxtConfig({
         dir: 'rtl'
       }
     }
-  }
+  },
+  modules: ['@vueuse/motion/nuxt'],
 })

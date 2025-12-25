@@ -12,13 +12,13 @@
             <UiLabel>
                 چه زمانی این حادثه رخ داده است؟ (اختیاری)
             </UiLabel>
-            <UiInput />
+            <UiInput place-holder="روز / ماه / سال" />
         </div>
         <div>
             <UiLabel>
                 آیا مهلت‌های مهمی دارید؟ (اختیاری)
             </UiLabel>
-            <UiInput />
+            <UiInput place-holder="روز / ماه / سال" />
             <p class="text-xs text-stone-400 mt-1">
                 تاریخ‌های دادگاه، مهلت‌های ثبت پرونده یا سایر تاریخ‌های حساس به زمان
             </p>

@@ -1,5 +1,5 @@
 <template>
-    <div class="space-y-4">
+    <div class="space-y-4" v-motion-slide-bottom>
         <div class="flex items-center justify-between">
             <p class="text-sm text-stone-500">
                 جمع در خواست های شما تا کنون: 1
