@@ -26,7 +26,7 @@
                         </component>
                     </nuxt-link>
                 </nav>
-                <secondButton @click="isOpenMobileNav = !isOpenMobileNav">
+                <secondButton @click="isOpenMobileNav = !isOpenMobileNav" class="md:hidden!">
                     <Bar3 class="size-5" v-if="!isOpenMobileNav" />
                     <XMarkIcon class="size-5" v-else />
                 </secondButton>
